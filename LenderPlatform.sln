@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.5.33627.172
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LenderPlatform", "LenderPlatform\LenderPlatform.csproj", "{0ED2B265-78BA-4947-B8B9-9B18AE85666D}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{0ED2B265-78BA-4947-B8B9-9B18AE85666D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0ED2B265-78BA-4947-B8B9-9B18AE85666D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0ED2B265-78BA-4947-B8B9-9B18AE85666D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0ED2B265-78BA-4947-B8B9-9B18AE85666D}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {A9B9EE65-36E5-47D9-B7F6-5FEDCB882DF9}
+	EndGlobalSection
+EndGlobal
