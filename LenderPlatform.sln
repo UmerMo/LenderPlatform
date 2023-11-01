@@ -5,6 +5,8 @@ VisualStudioVersion = 17.5.33627.172
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LenderPlatform", "LenderPlatform\LenderPlatform.csproj", "{0ED2B265-78BA-4947-B8B9-9B18AE85666D}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LenderPlatformTests", "LenderPlatformTests\LenderPlatformTests.csproj", "{113CB5BB-69D5-4F39-9C5E-0D5D1C35DA7C}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +17,10 @@ Global
 		{0ED2B265-78BA-4947-B8B9-9B18AE85666D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{0ED2B265-78BA-4947-B8B9-9B18AE85666D}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{0ED2B265-78BA-4947-B8B9-9B18AE85666D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{113CB5BB-69D5-4F39-9C5E-0D5D1C35DA7C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{113CB5BB-69D5-4F39-9C5E-0D5D1C35DA7C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{113CB5BB-69D5-4F39-9C5E-0D5D1C35DA7C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{113CB5BB-69D5-4F39-9C5E-0D5D1C35DA7C}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
