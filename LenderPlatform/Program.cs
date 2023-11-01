@@ -1,4 +1,6 @@
-﻿public class Program
+﻿using LenderPlatform;
+
+public class Program
 {
     static void Main(string[] args)
     {
@@ -13,6 +15,14 @@
         catch (FormatException)
         {
             Console.WriteLine("Loan amount needs to be number.");
+            return;
+        }
+
+        var isLoanAmountInRange = LoanCalculator.IsLoanAmountInRange(loanAmount);
+
+        if (!isLoanAmountInRange)
+        {
+            Console.WriteLine("Sorry, your application is rejected");
             return;
         }
 
