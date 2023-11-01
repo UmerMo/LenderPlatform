@@ -6,17 +6,7 @@ public class Program
     {
         Console.WriteLine("Blackfinch Lending Platform");
 
-        decimal loanAmount;
-        try
-        {
-            Console.Write("Please enter the loan amount: ");
-            loanAmount = decimal.Parse(Console.ReadLine());
-        }
-        catch (FormatException)
-        {
-            Console.WriteLine("Loan amount needs to be number.");
-            return;
-        }
+        decimal loanAmount = GetDecimalInput("Please enter the loan amount: ");
 
         var isLoanAmountInRange = LoanCalculator.IsLoanAmountInRange(loanAmount);
 
@@ -26,28 +16,37 @@ public class Program
             return;
         }
 
-        decimal assetValue;
-        try
-        {
-            Console.Write("Please enter the value of the asset: ");
-            assetValue = decimal.Parse(Console.ReadLine());
-        }
-        catch (FormatException)
-        {
-            Console.WriteLine("Asset amount needs to be a number.");
-            return;
-        }
+        decimal assetValue = GetDecimalInput("Please enter the value of the asset: ");
+        int creditScore = GetCreditScoreInput("Please enter your credit score, it should be between 1 and 999: ");
+    }
 
-        int creditScore;
-        try
+    //TODO: Move this into separate file and write unit tests
+
+    private static decimal GetDecimalInput(string prompt)
+    {
+        while (true)
         {
-            Console.Write("Please enter your credit score, it should be between 1 and 999: ");
-            creditScore = int.Parse(Console.ReadLine());
+            Console.Write(prompt);
+            string inputValue = Console.ReadLine();
+            if (decimal.TryParse(inputValue, out decimal parsedInput))
+            {
+                return parsedInput;
+            }
+            Console.WriteLine("Invalid input. Please enter a valid amount.");
         }
-        catch (FormatException)
+    }
+
+    private static int GetCreditScoreInput(string prompt)
+    {
+        while (true)
         {
-            Console.WriteLine("Invalid input for credit score.");
-            return;
+            Console.Write(prompt);
+            string inputValue = Console.ReadLine();
+            if (int.TryParse(inputValue, out int parsedInput) && parsedInput >= 1 && parsedInput <= 999)
+            {
+                return parsedInput;
+            }
+            Console.WriteLine("Invalid input. Please enter a valid integer between 1 and 999.");
         }
     }
 }
