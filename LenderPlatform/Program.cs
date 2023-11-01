@@ -7,21 +7,33 @@ public class Program
         Console.WriteLine("Blackfinch Lending Platform");
 
         decimal loanAmount = GetDecimalInput("Please enter the loan amount: ");
+        decimal assetValue = GetDecimalInput("Please enter the value of the asset: ");
+        int creditScore = GetCreditScoreInput("Please enter your credit score, it should be between 1 and 999: ");
 
         var isLoanAmountInRange = LoanCalculator.IsLoanAmountInRange(loanAmount);
 
         if (!isLoanAmountInRange)
         {
-            Console.WriteLine("Sorry, your application is rejected");
+            Console.WriteLine("Sorry, your application is declined");
             return;
         }
 
-        decimal assetValue = GetDecimalInput("Please enter the value of the asset: ");
-        int creditScore = GetCreditScoreInput("Please enter your credit score, it should be between 1 and 999: ");
+        var isSuccess = LoanCalculator.LoanToValue(loanAmount, assetValue, creditScore);
+
+        if (!isSuccess)
+        {
+            Console.WriteLine("Sorry, your application is declined");
+            return;
+        }
+        else
+        {
+            Console.WriteLine("Congratulations, your application is successful");
+            return;
+        }
+
     }
 
     //TODO: Move this into separate file and write unit tests
-
     private static decimal GetDecimalInput(string prompt)
     {
         while (true)
