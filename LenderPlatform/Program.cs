@@ -95,11 +95,9 @@ public class Program
 
         decimal meanAverageLTV = totalLTV / totalApplicants;
 
-        // Display the counts
         Console.WriteLine($"Number of Approved Applicants: {approvedCount}");
         Console.WriteLine($"Number of Denied Applicants: {deniedCount}");
 
-        // Display the additional metrics
         Console.WriteLine($"Total Value of Loans Written to Date: £{totalLoanValue:N2}");
         Console.WriteLine($"Mean Average Loan-to-Value (LTV): {meanAverageLTV:N2}%");
     }
