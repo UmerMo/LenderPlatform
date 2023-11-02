@@ -1,4 +1,6 @@
 ﻿using LenderPlatform;
+using LenderPlatform.API;
+using Newtonsoft.Json;
 
 public class Program
 {
@@ -28,9 +30,12 @@ public class Program
         else
         {
             Console.WriteLine("Congratulations, your application is successful");
-            return;
         }
 
+        // Metrics : TODO: Refactor out
+        List<Applicant> applicants = LoadApplicantsFromJson();
+
+        CalculateAndDisplayMetrics(applicants);
     }
 
     //TODO: Move this into separate file and write unit tests
@@ -61,4 +66,42 @@ public class Program
             Console.WriteLine("Invalid input. Please enter a valid integer between 1 and 999.");
         }
     }
+    static List<Applicant> LoadApplicantsFromJson()
+    {
+        string jsonFilePath = Path.Combine("API", "data.json");
+        List<Applicant> applicants = new List<Applicant>();
+
+        try
+        {
+            string jsonData = File.ReadAllText(jsonFilePath);
+            applicants = JsonConvert.DeserializeObject<List<Applicant>>(jsonData);
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine($"Error loading JSON data: {ex.Message}");
+        }
+
+        return applicants;
+    }
+
+    static void CalculateAndDisplayMetrics(List<Applicant> applicants)
+    {
+        int totalApplicants = applicants.Count;
+        int approvedCount = applicants.Count(applicant => applicant.LoanStatus == "Approved");
+        int deniedCount = applicants.Count(applicant => applicant.LoanStatus == "Declined");
+
+        decimal totalLoanValue = applicants.Sum(applicant => applicant.LoanAmount);
+        decimal totalLTV = applicants.Sum(applicant => (applicant.LoanAmount / applicant.AssetValue) * 100);
+
+        decimal meanAverageLTV = totalLTV / totalApplicants;
+
+        // Display the counts
+        Console.WriteLine($"Number of Approved Applicants: {approvedCount}");
+        Console.WriteLine($"Number of Denied Applicants: {deniedCount}");
+
+        // Display the additional metrics
+        Console.WriteLine($"Total Value of Loans Written to Date: £{totalLoanValue:N2}");
+        Console.WriteLine($"Mean Average Loan-to-Value (LTV): {meanAverageLTV:N2}%");
+    }
+
 }
